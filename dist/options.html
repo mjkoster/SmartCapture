@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Capture Settings</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <header class="page-header">
+      <h1>Smart Capture Settings</h1>
+      <span class="version">v1.0.0</span>
+    </header>
+
+    <main>
+      <!-- Keyboard shortcut -->
+      <section class="card">
+        <h2>Keyboard Shortcut</h2>
+        <p class="hint">
+          The capture shortcut is configured in Chrome's extension settings.
+          <a id="shortcut-link" href="#">Open keyboard shortcut settings</a>
+        </p>
+      </section>
+
+      <!-- Storage backend -->
+      <section class="card">
+        <h2>Storage Backend</h2>
+        <div class="radio-group">
+          <label class="radio-option">
+            <input type="radio" name="storageBackend" value="chrome-local">
+            <span class="radio-body">
+              <strong>Chrome Storage (Default)</strong>
+              <span class="hint">Up to 10 MB. Simple and reliable.</span>
+            </span>
+          </label>
+          <label class="radio-option">
+            <input type="radio" name="storageBackend" value="indexeddb">
+            <span class="radio-body">
+              <strong>IndexedDB</strong>
+              <span class="hint">Better for large collections (50+ MB capacity).</span>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <!-- Capture behaviour -->
+      <section class="card">
+        <h2>Capture Behaviour</h2>
+        <label class="checkbox-option">
+          <input type="checkbox" id="autoClassify" checked>
+          <span>Auto-detect page type on capture</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" id="extractContent" checked>
+          <span>Extract page content summary</span>
+        </label>
+        <label class="checkbox-option">
+          <input type="checkbox" id="extractKeywords" checked>
+          <span>Extract keywords automatically</span>
+        </label>
+      </section>
+
+      <!-- Data management -->
+      <section class="card">
+        <h2>Data Management</h2>
+        <div class="stats-row">
+          <span id="stat-total">0 captures</span>
+          <span class="separator">&middot;</span>
+          <span id="stat-storage">0 KB used</span>
+        </div>
+        <div class="btn-row">
+          <button id="export-btn" class="btn btn-outline">Export JSON</button>
+          <button id="import-btn" class="btn btn-outline">Import JSON</button>
+          <input type="file" id="import-file" accept=".json" hidden>
+        </div>
+        <div class="btn-row danger-row">
+          <button id="clear-btn" class="btn btn-danger">Clear All Data</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" hidden></div>
+  </div>
+
+  <script type="module" src="options.js"></script>
+</body>
+</html>

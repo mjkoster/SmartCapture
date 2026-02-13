@@ -1,0 +1,16 @@
+{
+  "name": "smart-capture",
+  "version": "1.0.0",
+  "description": "Chrome extension for capturing URLs with rich, structured metadata",
+  "type": "module",
+  "scripts": {
+    "dev": "vite build --watch",
+    "build": "vite build",
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5.7.0",
+    "vite": "^6.0.0"
+  }
+}

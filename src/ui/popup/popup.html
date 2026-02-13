@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Capture</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="popup">
+    <!-- Header -->
+    <header class="header">
+      <div class="header-left">
+        <span class="logo">&#x1F4CC;</span>
+        <h1>Smart Capture</h1>
+      </div>
+      <button id="settings-btn" class="icon-btn" title="Settings">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+          <path d="M7.07 0l.62 2.28a5.5 5.5 0 011.56.64l2.09-1.17 1.41 1.41-1.17 2.09c.28.5.49 1.01.64 1.56L14.5 7.43v2l-2.28.62a5.5 5.5 0 01-.64 1.56l1.17 2.09-1.41 1.41-2.09-1.17a5.5 5.5 0 01-1.56.64L7.07 16h-2l-.62-2.28a5.5 5.5 0 01-1.56-.64L.8 14.25l-1.41-1.41L.56 10.75a5.5 5.5 0 01-.64-1.56L-2.36 8.57v-2l2.28-.62a5.5 5.5 0 01.64-1.56L-.61 2.3l1.41-1.41 2.09 1.17a5.5 5.5 0 011.56-.64L5.07 0h2zm-1 5.5a2.5 2.5 0 100 5 2.5 2.5 0 000-5z"/>
+        </svg>
+      </button>
+    </header>
+
+    <!-- Capture button -->
+    <section class="section">
+      <button id="capture-btn" class="btn btn-primary btn-full">
+        <span class="btn-icon">&#x1F4F7;</span>
+        <span id="capture-btn-text">Capture This Page</span>
+      </button>
+    </section>
+
+    <!-- Capture preview (hidden until capture) -->
+    <section id="preview-section" class="section" hidden>
+      <div class="preview-card">
+        <img id="preview-favicon" class="preview-favicon" alt="" width="16" height="16">
+        <div class="preview-info">
+          <div id="preview-title" class="preview-title"></div>
+          <div id="preview-url" class="preview-url"></div>
+          <span id="preview-type" class="badge"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Annotation form (hidden until capture) -->
+    <section id="annotation-section" class="section" hidden>
+      <!-- Tags -->
+      <div class="form-group">
+        <label>Tags</label>
+        <div class="tag-input-wrap">
+          <div id="tags-container" class="tags-container"></div>
+          <input id="tag-input" type="text" placeholder="Add tag..." autocomplete="off" list="tag-suggestions">
+          <datalist id="tag-suggestions"></datalist>
+        </div>
+      </div>
+
+      <!-- Notes -->
+      <div class="form-group">
+        <label>Notes</label>
+        <textarea id="notes-input" rows="3" placeholder="Add a note..."></textarea>
+      </div>
+
+      <!-- Highlights (if text was selected) -->
+      <div id="highlight-group" class="form-group" hidden>
+        <label>Highlighted Text</label>
+        <blockquote id="highlight-text" class="highlight"></blockquote>
+      </div>
+
+      <!-- Actions -->
+      <div class="form-actions">
+        <button id="save-btn" class="btn btn-primary">Save</button>
+        <button id="discard-btn" class="btn btn-ghost">Discard</button>
+      </div>
+    </section>
+
+    <!-- Recent captures -->
+    <section class="section section-flex">
+      <h2 class="section-title">Recent</h2>
+      <div id="recent-list" class="capture-list">
+        <div class="empty-state">No captures yet</div>
+      </div>
+    </section>
+
+    <!-- Status toast -->
+    <div id="toast" class="toast" hidden></div>
+  </div>
+
+  <script type="module" src="popup.ts"></script>
+</body>
+</html>
